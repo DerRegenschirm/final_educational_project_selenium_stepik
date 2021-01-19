@@ -5,19 +5,21 @@ from selenium.common.exceptions import NoAlertPresentException # в начале
 
 
 class ProductPage(BasePage):
-    def correct_success_message(self):
+    def add_product_to_basket(self):
         self.should_be_add_button()
         self.click_add_button()
         self.solve_quiz_and_get_code()
         self.should_be_success_message()
+        self.should_be_correct_success_message()
+        self.should_be_price_message()
+        self.should_be_correct_price()
+
+    def should_be_correct_success_message(self):
         title=self.browser.find_element(*ProductPageLocators.BOOK_TITLE)
         success_message = self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE)
         assert title.text in success_message.text
 
-    def correct_price(self):
-        self.should_be_add_button()
-        self.click_add_button()
-        self.should_be_price_message()
+    def should_be_correct_price(self):
         price = self.browser.find_element(*ProductPageLocators.PRICE)
         price_message = self.browser.find_element(*ProductPageLocators.PRICE_MESSAGE)
         assert price.text in price_message.text
