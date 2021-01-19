@@ -19,14 +19,14 @@ class ProductPage(BasePage):
         a=title.text
         success_message = self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE)
         b=success_message.text
-        assert a in b
+        assert a in b, f"Dif title {title} and message {success_message}"
 
     def should_be_correct_price(self):
         price = self.browser.find_element(*ProductPageLocators.PRICE)
         a = price.text
         price_message = self.browser.find_element(*ProductPageLocators.PRICE_MESSAGE)
         b=price_message.text
-        assert a==b
+        assert a in b, f"Dif price {a} and message {b}"
 
     def should_be_add_button(self):
         assert self.is_element_present(*ProductPageLocators.ADDTOBASKET_BTN), "Add to cart button is not presented"
