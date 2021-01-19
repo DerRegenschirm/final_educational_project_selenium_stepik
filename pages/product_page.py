@@ -16,13 +16,17 @@ class ProductPage(BasePage):
 
     def should_be_correct_success_message(self):
         title=self.browser.find_element(*ProductPageLocators.BOOK_TITLE)
+        a=title.text
         success_message = self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE)
-        assert title in success_message
+        b=success_message.text
+        assert a in b
 
     def should_be_correct_price(self):
         price = self.browser.find_element(*ProductPageLocators.PRICE)
+        a = price.text
         price_message = self.browser.find_element(*ProductPageLocators.PRICE_MESSAGE)
-        assert price in price_message
+        b=price_message.text
+        assert a==b
 
     def should_be_add_button(self):
         assert self.is_element_present(*ProductPageLocators.ADDTOBASKET_BTN), "Add to cart button is not presented"
