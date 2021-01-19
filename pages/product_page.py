@@ -38,7 +38,7 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.PRICE_MESSAGE)
 
     def click_add_button(self):
-        add_but=self.browser.find_element(*ProductPageLocators.ADDTOBASKET_BTN)
+        add_but = self.browser.find_element(*ProductPageLocators.ADDTOBASKET_BTN)
         add_but.click()
 
     def solve_quiz_and_get_code(self):
