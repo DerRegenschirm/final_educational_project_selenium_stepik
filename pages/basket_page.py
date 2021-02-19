@@ -8,4 +8,5 @@ class BasketPage(BasePage):
             "Basket items are presented, but should not be"
 
     def should_be_empty_basket_message(self):
-        assert self.is_element_present(*BasketPageLocators.EMPTY_MESSAGE), \ "No empty cart message"
+        assert self.is_element_present(*BasketPageLocators.EMPTY_MESSAGE), \
+            "No empty cart message"
