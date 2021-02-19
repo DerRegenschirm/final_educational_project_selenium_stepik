@@ -1,4 +1,9 @@
-from selenium.common.exceptions import NoSuchElementException
+from telnetlib import EC
+
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 
 class BasePage():
     def __init__(self, browser, url):
