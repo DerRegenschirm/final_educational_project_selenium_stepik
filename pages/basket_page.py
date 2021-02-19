@@ -7,5 +7,5 @@ class BasketPage(BasePage):
         assert self.is_not_element_present(*BasketPageLocators.BASKET_ITEMS), \
             "Basket items are presented, but should not be"
 
-    def should_be_empty_basket_massage(self):
+    def should_be_empty_basket_message(self):
         assert self.is_element_present(*BasketPageLocators.EMPTY_MESSAGE)
