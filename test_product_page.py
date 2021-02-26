@@ -77,7 +77,7 @@ class TestUserAddToBasketFromProductPage():
         #email = str(time.time()) + "@fakemail.org"
         f = Faker()
         email = f.email()
-        password=f.phonenumber()()
+        password = f.phonenumber()
         page.register_new_user(email, password)
         page.should_be_authorized_user()
 
