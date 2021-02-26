@@ -2,7 +2,6 @@ from .pages.product_page import ProductPage
 from .pages.basket_page import BasketPage
 from .pages.login_page import LoginPage
 import pytest
-#import time
 from faker import Faker
 
 
@@ -19,7 +18,6 @@ from faker import Faker
 @pytest.mark.need_review
 def test_guest_can_add_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
-    #link="http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/?promo=newYear2019"
     page = ProductPage(browser, link)
     page.open()
     page.add_product_to_basket()
@@ -30,14 +28,12 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     page = ProductPage(browser, link)
     page.open()
     page.add_product_to_basket()
-    #page.is_not_element_present()
     page.should_not_be_success_message()
 
 def test_guest_cant_see_success_message(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209"
     page = ProductPage(browser, link)
     page.open()
-    #page.is_not_element_present()
     page.should_not_be_success_message()
 
 @pytest.mark.xfail(reason="correct behaviour")
@@ -46,7 +42,6 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
     page = ProductPage(browser, link)
     page.open()
     page.add_product_to_basket()
-    #page.is_disappeared()
     page.should_disappear_success_message()
 
 def test_guest_should_see_login_link_on_product_page(browser):
@@ -78,10 +73,8 @@ class TestUserAddToBasketFromProductPage():
         link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
         page = LoginPage(browser, link)
         page.open()
-        #email = str(time.time()) + "@fakemail.org"
         f = Faker()
         email = f.email()
-        #password = f.phonenumber()
         page.register_new_user(email, "123123abc")
         page.should_be_authorized_user()
 
@@ -89,13 +82,11 @@ class TestUserAddToBasketFromProductPage():
         link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209"
         page = ProductPage(browser, link)
         page.open()
-        # page.is_not_element_present()
         page.should_not_be_success_message()
 
     @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
-        #link="http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/?promo=newYear2019"
         page = ProductPage(browser, link)
         page.open()
         page.add_product_to_basket()
