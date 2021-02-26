@@ -5,6 +5,9 @@ import pytest
 #import time
 from faker import Faker
 
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
 #@pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
 #                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
 #                                  "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer2",
@@ -81,7 +84,6 @@ class TestUserAddToBasketFromProductPage():
         page.register_new_user(email, "123123abc")
         page.should_be_authorized_user()
 
-
     def test_user_cant_see_success_message(browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209"
         page = ProductPage(browser, link)
@@ -91,7 +93,7 @@ class TestUserAddToBasketFromProductPage():
 
     def test_user_can_add_product_to_basket(browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
-        # link="http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/?promo=newYear2019"
+        #link="http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/?promo=newYear2019"
         page = ProductPage(browser, link)
         page.open()
         page.add_product_to_basket()
